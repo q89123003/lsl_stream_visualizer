@@ -1,1 +1,1 @@
-# lsl_stream_viewer
+# lsl_stream_visualizer
