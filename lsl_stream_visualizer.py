@@ -90,7 +90,12 @@ class Plot2DViewer(object):
 
                 for k in range(self.bufferSize-qs, self.bufferSize):
                     s = self.queue.get()
-                    self.y[0:self.channelNum, k] = s
+
+                    if s.dtype.type is np.str_:
+                        for c in range(self.channelNum):
+                            self.y[c, k] = ord(s[c][0])
+                    else:
+                        self.y[0:self.channelNum, k] = s
 
                 for i in range(self.channelNum):
                     a = self.y[i, :]
